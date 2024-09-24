@@ -32,7 +32,7 @@ function App() {
     return (
         <div>
             <div id="full-screen-barcode-modal" className="z-50 w-screen h-screen p-[10px] absolute bg-black *:w-full *:h-full" style={{display: fsBarcode == null ? "none" : "block"}} onClick={() => {setFsBarcode(null)}}>
-                <Barcode value={fsBarcode?.value ?? ""} format={fsBarcode?.format == "EAN13" ? "EAN13" : "EAN8"} />
+                <Barcode value={fsBarcode?.value ?? ""} format={fsBarcode?.format == "EAN13" ? "EAN13" : (fsBarcode?.format == "UPC-A" ? "UPC" : "EAN8")} />
             </div>
             <div className="flex flex-row items-center justify-between py-[30px] px-[40px]">
                   <p className="text-3xl">Non-DRS Barcodes DB</p>
@@ -51,7 +51,7 @@ function App() {
                             <div key={barcode.id} onClick={() => {setFsBarcode(barcode)}}
                                 className="bg-neutral-800 flex flex-col items-center justify-center rounded-3xl p-[20px] cursor-pointer *:rounded-xl" id={barcode.id}>
                                 {/*<img src={qr1} alt={barcode.value} className="rounded-xl"/>*/}
-                                <Barcode value={barcode.value} format={barcode.format == "EAN13" ? "EAN13" : "EAN8"} />
+                                <Barcode value={barcode.value} format={barcode.format == "EAN13" ? "EAN13" : (barcode.format == "UPC-A" ? "UPC" : "EAN8")} />
                                 <p className="text-xl font-bold text-white pt-[10px]">
                                     {barcode.name}
                                 </p>
