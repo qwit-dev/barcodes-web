@@ -31,7 +31,7 @@ function App() {
 
     return (
         <div>
-            <div id="full-screen-barcode-modal" className="z-50 w-screen h-screen p-[10px] absolute bg-black *:w-full *:h-full" style={{display: fsBarcode == null ? "none" : "block"}} onClick={() => {setFsBarcode(null)}}>
+            <div id="full-screen-barcode-modal" className="z-50 w-screen h-screen p-[10px] fixed bg-black *:w-full *:h-full" style={{display: fsBarcode == null ? "none" : "block"}} onClick={() => {setFsBarcode(null)}}>
                 <Barcode value={fsBarcode?.value ?? ""} format={fsBarcode?.format == "EAN13" ? "EAN13" : (fsBarcode?.format == "UPC-A" ? "UPC" : "EAN8")} />
             </div>
             <div className="flex flex-row items-center justify-between py-[30px] px-[40px]">
@@ -44,7 +44,7 @@ function App() {
                       setBarcodes(findProduct(event.target.value));
                   }} />
             </div>
-            <div className="flex flex-row items-center justify-center h-max flex-wrap gap-[30px] mt-[20px]">
+            <div className="flex flex-row items-center justify-center h-max max-h-full flex-wrap gap-[30px] mt-[20px] bg-neutral-950">
                 {
                     barcodes ? barcodes.map((barcode: BarcodeType) => {
                         return (
